@@ -28,7 +28,7 @@ metadata:
   namespace: dev
 spec:
   selector:
-    app: app2
+    app: will42-pod
   ports:
   - port: 8888
     targetPort: 8888
