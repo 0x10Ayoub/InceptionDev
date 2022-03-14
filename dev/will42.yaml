@@ -43,12 +43,13 @@ metadata:
     ingress.kubernetes.io/ssl-redirect: "false"
 spec:
   rules:
-  - http:
-      paths:
-        - path: /
-          pathType: Prefix
-          backend:
-            service:
-              name:  will42-svc
-              port:
-                number: 8888
+    - host: app.com
+      http:
+          paths:
+            - path: /
+              pathType: Prefix
+              backend:
+                service:
+                  name:  will42-svc
+                  port:
+                    number: 8888
