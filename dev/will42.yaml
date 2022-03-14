@@ -27,28 +27,29 @@ metadata:
   name:  will42-svc
   namespace: dev
 spec:
+  type: NodePort
   selector:
     app: will42-pod
   ports:
   - port: 8888
-    targetPort: 8888
+    nodePort: 3000
 
----
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: argocd-ingress
-  namespace: dev
-  annotations:
-    ingress.kubernetes.io/ssl-redirect: "false"
-spec:
-  rules:
-  - http:
-      paths:
-        - path: /
-          pathType: Prefix
-          backend:
-            service:
-              name:  will42-svc
-              port:
-                number: 8888
+# ---
+# apiVersion: networking.k8s.io/v1
+# kind: Ingress
+# metadata:
+#   name: argocd-ingress
+#   namespace: oherba
+#   annotations:
+#     ingress.kubernetes.io/ssl-redirect: "false"
+# spec:
+#   rules:
+#   - http:
+#       paths:
+#         - path: /
+#           pathType: Prefix
+#           backend:
+#             service:
+#               name:  will42-svc
+#               port:
+#                 number: 8888
