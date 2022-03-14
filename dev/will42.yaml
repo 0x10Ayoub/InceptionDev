@@ -27,29 +27,10 @@ metadata:
   name:  will42-svc
   namespace: dev
 spec:
+  type: LoadBalancer
   selector:
     app: will42-pod
   ports:
   - port: 8888
     targetPort: 8888
 
----
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: will-ingress
-  namespace: dev
-  annotations:
-    ingress.kubernetes.io/ssl-redirect: "false"
-spec:
-  rules:
-    - host: app.com
-      http:
-          paths:
-            - path: /
-              pathType: Prefix
-              backend:
-                service:
-                  name:  will42-svc
-                  port:
-                    number: 8888
