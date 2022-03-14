@@ -32,6 +32,7 @@ spec:
     app: will42-pod
   ports:
   - port: 8888
+    targetPort: 8888
     nodePort: 3000
 
 # ---
